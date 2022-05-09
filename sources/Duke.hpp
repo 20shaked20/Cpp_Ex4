@@ -41,7 +41,7 @@ namespace coup{
          * @brief blocks the chosen player from of using the method "foriegn_aid"
          * the blocked player must return the taken coins to the pile.
          */
-        void block(Player &player);
+        static void block(Player &player);
 
         /**
          * @brief allows taking 3 coins from the pile without being blocked.

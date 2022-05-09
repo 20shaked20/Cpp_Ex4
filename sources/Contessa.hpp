@@ -19,9 +19,6 @@ namespace coup{
 
     class Contessa : public Player{
 
-        // public:
-        // coup::Player player_on_action;
-
         public:
 
         /**
@@ -42,7 +39,7 @@ namespace coup{
          * @brief allows blocking the assassin 'coup' -> Assassin etzio
          * 
          */
-        void block(Player &player);
+        static void block(Player &player);
 
         /**
          * @brief Returns the Contessa role in detail.

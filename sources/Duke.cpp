@@ -11,14 +11,8 @@
 
 #include "Duke.hpp"
 
-coup::Duke::Duke(coup::Game &game, const std::string &name){
-
-    this->_name = name;
-    this->_game = &game;
-    this->_game->_players.push_back(name); /*check for ref*/
-    this->_game->_player_count++;
+coup::Duke::Duke(coup::Game &game, const std::string &name) : Player(game,name) {
     this->_role = "Duke";
-    this->_coins = 0;
 }
 
 coup::Duke::~Duke(){}
@@ -31,15 +25,17 @@ void coup::Duke::block(Player &player){
 
     }else{
         
-        player.is_blocked = true;
-        // player.foreign_aid(); 
+        // player.is_blocked = true;
+        player._coins-=2;
     }
 
 }
 
 void coup::Duke::tax(){
-
-    this->_coins+=3;
+    
+    this->is_my_turn();
+    
+    this->_coins+=three;
     this->_game->_turn++;
 
 }

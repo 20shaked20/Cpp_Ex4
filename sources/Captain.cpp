@@ -11,42 +11,39 @@
 
 #include "Captain.hpp"
 
-coup::Captain::Captain(coup::Game &game, const std::string &name){
+coup::Captain::Captain(coup::Game &game, const std::string &name): Player(game,name){
 
-    this->_name = name;
-    this->_game = &game;
-    this->_game->_players.push_back(name); /*check for ref*/
-    this->_game->_player_count++;
     this->_role = "Captain";
-    this->_coins = 0;
+    this->player_on_action = NULL;
+   
 }
 
 coup::Captain::~Captain(){}
 
 void coup::Captain::steal(Player &player){
 
-    // this->player_on_action = player; /*keeps reference to player we did the action on*/
+    this->player_on_action = &player; /*keeps reference to player we did the action on*/
     
     int stealing = std::min((int)player.coins(),2); /*get the minimum coins the player has*/
 
     if(!this->is_blocked){
-        
+        this->is_my_turn();
         player._coins-=stealing;
         this->_coins+=stealing;
+        this->_game->_turn++; 
 
     }else{
         /*fix this to fit the right amount of coins*/
-        player._coins+=2;
-        this->_coins-=2;
+        player._coins+=two;
+        this->_coins-=two;
+        this->is_blocked = false;
     }
     
-    this->_game->_turn++;
-
 }
 
 void coup::Captain::block(Player &player){
     
-    // Captain *c = (Captain*) &player;
+    Captain *c = dynamic_cast<Captain*> (&player);
 
     if(player._last_action != "steal"){
 
@@ -55,7 +52,7 @@ void coup::Captain::block(Player &player){
     }else{
         
         player.is_blocked = true;
-        // c->steal(c->player_on_action);
+        c->steal(*c->player_on_action);
         
     }
 

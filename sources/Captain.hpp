@@ -19,8 +19,8 @@ namespace coup{
 
     class Captain : public Player{
         
-        // public:
-        // coup::Player player_on_action;
+        public:
+        coup::Player *player_on_action;
 
         public:
 
@@ -48,7 +48,7 @@ namespace coup{
          * @brief allows blocking the 'steal' operation applied by another captain.
          * 
          */
-        void block(Player &player);
+        static void block(Player &player);
 
         /**
          * @brief Returns the Captain role in detail.

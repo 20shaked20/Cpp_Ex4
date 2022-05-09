@@ -14,13 +14,21 @@
 #include <vector>
 #include "Game.hpp"
 
+int const seven = 7;
+int const four = 4;
+int const two = 2;
+int const three = 3;
+int const six = 6;
+int const ten = 10;
+
 namespace coup{
     // class game; /*check this*/
     class Player{
         
         public:
-        bool is_blocked = false;
-        int _coins = 0;
+        bool is_blocked;
+        bool is_alive;
+        int _coins;
         std::string _last_action;
         std::string _name;
         std::string _role;
@@ -33,7 +41,7 @@ namespace coup{
          * 
          * @param name a user name
          */
-        Player();
+        Player(Game &game,std::string const& name);
 
         /**
          * @brief Destroy the Player object
@@ -71,14 +79,14 @@ namespace coup{
          * 
          * @return std::string 
          */
-        const std::string name();
+        std::string name() const;
 
         /**
          * @brief Returns the amount of coins the player has at the moment.
          * 
          * @return unsigned int 
          */
-        const int coins() const;
+        int coins() const;
         
         /**
          * @brief method to check if the current turn represent a player turn.
@@ -86,7 +94,7 @@ namespace coup{
          * @return true 
          * @return false 
          */
-        bool is_my_turn();
+        bool is_my_turn() const;
 
 
     };

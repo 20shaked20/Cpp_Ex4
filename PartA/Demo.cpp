@@ -87,7 +87,6 @@ int main() {
 	{
 		std::cerr << e.what() << '\n';
 	}
-
 	duke.block(assassin);
 	cout << assassin.coins() << endl; // prints 1
 

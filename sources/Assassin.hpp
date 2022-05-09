@@ -19,8 +19,8 @@ namespace coup{
 
     class Assassin : public Player{
 
-        // public:
-        // coup::Player player_on_action;
+        public:
+        coup::Player *player_on_action;
 
         public:
         

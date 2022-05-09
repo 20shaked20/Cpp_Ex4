@@ -12,21 +12,17 @@
 #include "Contessa.hpp"
 #include "Assassin.hpp"
 
-coup::Contessa::Contessa(coup::Game &game, const std::string &name){
+coup::Contessa::Contessa(coup::Game &game, const std::string &name): Player(game,name){
 
-    this->_name = name;
-    this->_game = &game;
-    this->_game->_players.push_back(name); /*check for ref*/
-    this->_game->_player_count++;
     this->_role = "Contessa";
-    this->_coins = 0;
+
 }
 
 coup::Contessa::~Contessa(){}
 
 void coup::Contessa::block(Player &player){
 
-    // Assassin *a = (Assassin*) &player;
+    Assassin *a = dynamic_cast<Assassin*> (&player);
 
     if(player._last_action != "coup3"){
 
@@ -34,8 +30,8 @@ void coup::Contessa::block(Player &player){
 
     }else{
         
-        player.is_blocked = true;
-        // a->coup(a->player_on_action);
+        a->is_blocked = true;
+        a->coup(*a->player_on_action);
     }
 
 }

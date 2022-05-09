@@ -22,6 +22,7 @@ namespace coup{
         std::vector<std::string> _players;
         int _turn;
         int _player_count;
+        bool is_on;
 
         public:
 

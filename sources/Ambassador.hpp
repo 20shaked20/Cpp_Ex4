@@ -19,9 +19,6 @@ namespace coup{
 
     class Ambassador : public Player{
 
-        // public:
-        // coup::Player player_on_action;
-
         public:
         
         /**
@@ -48,7 +45,7 @@ namespace coup{
          * @brief allows blocking the theft operation applied by the captain.
          * 
          */
-        void block(Player &player);
+        static void block(Player &player);
 
         /**
          * @brief Returns the Ambassador role in detail.
