@@ -18,13 +18,13 @@ coup::Player::Player(Game &game, std::string const& name){
 
     if(_game->is_on){
 
-        throw "Game already started cannot join";
+        std::__throw_logic_error("Game already started cannot join");
     }
 
     if(_game->_player_count > six){
 
         this->_game->_player_count--;
-        throw "Game cannot have more than six players";
+        std::__throw_logic_error("Game cannot have more than six players");
 
     }
 
@@ -44,12 +44,12 @@ void coup::Player::income(){
     
     if(_game->_player_count < two){
         
-        throw "Game cannot start with one guy";
+        std::__throw_logic_error ("Game cannot start with one guy");
     }
     is_my_turn(); 
 
     if(this->coins() > ten){
-        throw "You have more than 10 coins, must coup";
+        std::__throw_logic_error ("You have more than 10 coins, must coup");
     }
 
     this->_last_action = "income";  
@@ -63,13 +63,13 @@ void coup::Player::foreign_aid(){
     
     if(_game->_player_count < two){
         
-        throw "Game cannot start with one guy";
+        std::__throw_logic_error ("Game cannot start with one guy");
     }
 
     is_my_turn();
 
     if(this->coins() > ten){
-        throw "You have more than 10 coins, must coup";
+        std::__throw_logic_error ("You have more than 10 coins, must coup");
     }
         
     this->_last_action = "foreign_aid";
@@ -85,14 +85,14 @@ void coup::Player::coup(Player &player){
     is_my_turn();
 
     if(!player.is_alive){
-        throw "Player is dead, cannot coup";
+        std::__throw_logic_error ("Player is dead, cannot coup");
     }
     
     if(this->coins() < seven){
         
         if(this->role() != "Assassin"){
 
-            throw "Habibi you dont have enough coins...\n";
+            std::__throw_invalid_argument ("Habibi you dont have enough coins...\n");
         }
 
     }

@@ -31,6 +31,7 @@ void coup::Contessa::block(Player &player){
     }else{
         
         a->is_blocked = true;
+        // std::cout<<(a->player_on_action->name()) << std::endl;
         a->coup(*a->player_on_action);
     }
 

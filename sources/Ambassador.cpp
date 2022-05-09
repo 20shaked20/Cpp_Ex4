@@ -24,7 +24,7 @@ void coup::Ambassador::transfer(Player &p1, Player&p2){
 
     if(p1.coins() == 0){
 
-        throw "player 1 has zero coins, cannot make transfer... \n";
+        std::__throw_logic_error( "player 1 has zero coins, cannot make transfer... \n");
         
     }
     p1._coins--;
@@ -38,12 +38,12 @@ void coup::Ambassador::block(Player &player){
 
     Captain *c = dynamic_cast<Captain*> (&player); 
 
-    if(player._last_action != "steal"){
+    if(c->_last_action != "steal"){
 
         std::__throw_invalid_argument ("Ambassador can block only the steal operation");
 
     }    
-    player.is_blocked = true;
+    c->is_blocked = true;
     c->steal(*c->player_on_action);
 
 }

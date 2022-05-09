@@ -56,11 +56,11 @@ std::vector<std::string> coup::Game::players(){ /*check this*/
 std::string coup::Game::winner(){
 
     if(!is_on){
-        throw "Game has not started yet";
+        std::__throw_logic_error( "Game has not started yet");
     }
 
     if(this->_player_count > 1){
-        throw "Game is not over yet...\n";
+        std::__throw_logic_error( "Game is not over yet...\n");
     }
     for(std::size_t i = 0; i<_players.size();++i) {
         if((_players.at(i))[0] != '*'){ /*dead player = "*"+name*/

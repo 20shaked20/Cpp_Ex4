@@ -28,6 +28,7 @@ void coup::Captain::steal(Player &player){
 
     if(!this->is_blocked){
         this->is_my_turn();
+        this->_last_action = "steal";
         player._coins-=stealing;
         this->_coins+=stealing;
         this->_game->_turn++; 

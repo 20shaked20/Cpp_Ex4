@@ -23,9 +23,10 @@ coup::Assassin::~Assassin(){}
 void coup::Assassin::coup(Player &player){
     
     this->player_on_action = &player;
+    
 
     if(this->coins() < 3 && !this->is_blocked){
-        throw "Not enough coins for assassin";
+        std::__throw_invalid_argument( "Not enough coins for assassin");
     }
 
     if(this->coins() >= seven && !this->is_blocked){
@@ -49,9 +50,9 @@ void coup::Assassin::coup(Player &player){
                 _game->_player_count++;
                 break;
             }
-            this->is_blocked = false;
-            this->player_on_action->is_alive = true; /*revive player*/
         }
+            this->is_blocked = false;
+            this->player_on_action->is_alive = true; /*revive player*/        
     }
 }
 
